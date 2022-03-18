@@ -6,8 +6,6 @@ const NoteRoute = require('./Routes/Notes')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const path = require('path');
-const { requireAuth } = require('./Middleware/AuthMiddleware');
 
 dotenv.config();
 
@@ -16,6 +14,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, "/clientside/build")));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/clientside/build', 'index.html'));
+});
+
+
 const PORT = process.env.PORT || 5000;
 
 

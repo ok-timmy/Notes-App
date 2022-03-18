@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const Note = require("../Models/Note");
 const jwt = require('jsonwebtoken');
-// const { requireAuth } = require("../Middleware/AuthMiddleware");
 
 
 // CREATE NOTE
